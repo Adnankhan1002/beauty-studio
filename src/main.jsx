@@ -16,7 +16,7 @@ const Sparkles = () => <Icon symbol="✦"/>;
 const Star = () => <Icon symbol="★"/>;
 const X = () => <Icon symbol="×"/>;
 
-const IG='https://www.instagram.com/umrakazmimakeupstudio/';
+const IG='https://www.instagram.com/royalmakeupstudio/';
 const wa='https://wa.me/?text=Hi%20Umra%20Kazmi%20Makeup%20Studio%2C%20I%27d%20like%20to%20book%20an%20appointment.';
 
 const services=[
@@ -41,7 +41,7 @@ const testimonials=[
  ['“The consultation made the whole experience feel personal. I knew exactly what I wanted before the big day.”','Bride']
 ];
 
-function Logo(){return <a className="logo" href="#home" aria-label="Umra Kazmi Makeup Studio"><span className="logo-mark">UK</span><span><b>UMRA KAZMI</b><small>MAKEUP STUDIO</small></span></a>}
+function Logo(){return <a className="logo" href="#home" aria-label="Royal Makeup Studio"><span className="logo-mark">UK</span><span><b>ROYAL</b><small>MAKEUP STUDIO</small></span></a>}
 function Reveal({children,delay=0,className=''}){return <div className={`reveal ${className}`} style={{'--reveal-delay': `${delay}s`}}>{children}</div>}
 
 function BookingModal({open,onClose}){
@@ -59,14 +59,14 @@ function BookingModal({open,onClose}){
    if(form.date<today){setError('Please choose today or a future date.');return}
    const id=`UK-${form.date.replaceAll('-','')}-${Math.floor(1000+Math.random()*9000)}`;
    const appointment={...form,id,createdAt:new Date().toISOString(),status:'Confirmed'};
-   localStorage.setItem(`umra-kazmi-${id}`,JSON.stringify(appointment));
+   localStorage.setItem(`royal-${id}`,JSON.stringify(appointment));
    setBookingId(id);setSent(true);
  };
  return <div className="modal-backdrop modal-enter" onMouseDown={e=>e.target===e.currentTarget&&onClose()}>
    <div className="booking-modal modal-panel-enter">
     <button className="icon-btn modal-close" onClick={onClose} aria-label="Close"><X/></button>
     {!sent ? <>
-      <div className="modal-image"><img src="/images/hero.jpg" alt="Bridal makeup at Umra Kazmi Makeup Studio"/><div><span>YOUR BEAUTY, YOUR MOMENT</span><h3>Reserve your signature look.</h3></div></div>
+      <div className="modal-image"><img src="/images/hero.jpg" alt="Bridal makeup at royal Makeup Studio"/><div><span>YOUR BEAUTY, YOUR MOMENT</span><h3>Reserve your signature look.</h3></div></div>
       <div className="modal-form">
         <span className="eyebrow">Online appointment</span><h2>Book your date</h2><p>No WhatsApp step. Enter your details and confirm your appointment directly online.</p>
         <div className="form-grid">
@@ -114,7 +114,7 @@ function App(){
 
  <section className="cta" id="contact"><div className="cta-photo"><img src="/images/makeup-artist.jpg"/></div><div className="cta-copy"><span className="eyebrow light">READY FOR YOUR MOMENT?</span><h2>Let’s create a look<br/><em>you’ll never forget.</em></h2><p>Tell us about your occasion and we’ll help you shape the right makeup, hair and beauty experience.</p><div className="cta-actions"><button className="btn btn-rose" onClick={()=>setBooking(true)}>Book appointment <ArrowRight size={16}/></button><a className="btn btn-outline" href={wa} target="_blank" rel="noreferrer"><MessageCircle size={16}/> WhatsApp us</a></div></div></section>
  </main>
- <footer><div className="footer-top"><Logo/><div><span>Explore</span><a href="#about">About</a><a href="#services">Services</a><a href="#portfolio">Portfolio</a></div><div><span>Contact</span><a href={IG} target="_blank" rel="noreferrer">Instagram</a><a href={wa} target="_blank" rel="noreferrer">WhatsApp</a><a href="#contact">Book appointment</a></div><div className="footer-note"><span>UMRA KAZMI</span><p>Beauty beyond trends.<br/>Confidence beyond makeup.</p></div></div><div className="footer-bottom"><span>© 2026 Umra Kazmi Makeup Studio</span><span>Designed as a premium digital experience</span></div></footer>
+ <footer><div className="footer-top"><Logo/><div><span>Explore</span><a href="#about">About</a><a href="#services">Services</a><a href="#portfolio">Portfolio</a></div><div><span>Contact</span><a href={IG} target="_blank" rel="noreferrer">Instagram</a><a href={wa} target="_blank" rel="noreferrer">WhatsApp</a><a href="#contact">Book appointment</a></div><div className="footer-note"><span>ROYAL MAKEUP</span><p>Beauty beyond trends.<br/>Confidence beyond makeup.</p></div></div><div className="footer-bottom"><span>© 2026 Royal Makeup Studio</span><span>Designed as a premium digital experience</span></div></footer>
  <a className="floating-wa" href={wa} target="_blank" rel="noreferrer" aria-label="WhatsApp"><MessageCircle/></a>
  <BookingModal open={booking} onClose={()=>setBooking(false)}/>
  <>{lightbox&&<div className="lightbox modal-enter" onClick={()=>setLightbox(null)}><button className="icon-btn lightbox-close" onClick={()=>setLightbox(null)}><X/></button><img className="lightbox-image-enter" src={lightbox.image} alt={lightbox.title} onClick={e=>e.stopPropagation()}/><div className="lightbox-label"><span>{lightbox.tag}</span><b>{lightbox.title}</b></div></div>}</>
